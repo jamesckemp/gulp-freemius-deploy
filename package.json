@@ -1,0 +1,22 @@
+{
+  "name": "gulp-freemius-deploy",
+  "version": "1.0.3",
+  "description": "Deploy a zip file to Freemius",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "freemius",
+    "deploy",
+    "gulp"
+  ],
+  "author": "James Kemp [me@jckemp.com] (http://jckemp.com)",
+  "license": "MIT",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "fs": "0.0.1-security",
+    "needle": "^2.0.1",
+    "node-notifier": "^5.1.2"
+  }
+}
