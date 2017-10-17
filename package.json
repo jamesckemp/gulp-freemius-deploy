@@ -1,6 +1,6 @@
 {
   "name": "gulp-freemius-deploy",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Deploy a zip file to Freemius",
   "main": "index.js",
   "scripts": {
