@@ -11,6 +11,8 @@
     "deploy",
     "gulp"
   ],
+  "homepage": "http://iconicwp.com",
+  "repository": "jamesckemp/gulp-freemius-deploy",
   "author": "James Kemp [me@jckemp.com] (http://jckemp.com)",
   "license": "MIT",
   "dependencies": {
