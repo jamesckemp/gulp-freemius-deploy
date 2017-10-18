@@ -65,8 +65,16 @@ module.exports = function( gulp, args ) {
 		needle.post( 'https://api.freemius.com' + resource_url, data, options, function( error, response, body ) {
 			var message;
 
-			if ( error ) {
+			if ( response.statusCode == 500 ) {
+				message = 'Try deploying to Freemius again in a minute.';
+				notifier.notify( { message: message } );
+				console.log( '\x1b[33m%s\x1b[0m', message );
+				return
+			}
+
+			if ( error || response.statusCode != 201 ) {
 				message = 'Error deploying to Freemius.';
+				if ( body.error && body.error.message ) message += '\n' + body.error.message;
 				notifier.notify( { message: message } );
 				console.log( '\x1b[31mm%s\x1b[0m', message );
 				return;
@@ -79,9 +87,6 @@ module.exports = function( gulp, args ) {
 				return;
 			}
 
-			message = 'Try deploying to Freemius again in a minute.';
-			notifier.notify( { message: message } );
-			console.log( '\x1b[33m%s\x1b[0m', message );
 		} );
 	} );
 };
