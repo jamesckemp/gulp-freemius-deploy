@@ -73,7 +73,7 @@ module.exports = function( gulp, args ) {
 			}
 
 			if ( typeof body === 'object' ) {
-				if ( typeof body.error.message !== 'undefined' ) {
+				if ( typeof body.error !== 'undefined' ) {
 					message = 'Error: ' + body.error.message;
 					notifier.notify( { message: message } );
 					console.log( '\x1b[31m%s\x1b[0m', message );
