@@ -68,7 +68,7 @@ module.exports = function( gulp, args ) {
 			if ( error ) {
 				message = 'Error deploying to Freemius.';
 				notifier.notify( { message: message } );
-				console.log( '\x1b[31mm%s\x1b[0m', message );
+				console.log( '\x1b[31m%s\x1b[0m', message );
 				return;
 			}
 
@@ -76,7 +76,7 @@ module.exports = function( gulp, args ) {
 				if ( typeof body.error.message !== 'undefined' ) {
 					message = 'Error: ' + body.error.message;
 					notifier.notify( { message: message } );
-					console.log( '\x1b[31mm%s\x1b[0m', message );
+					console.log( '\x1b[31m%s\x1b[0m', message );
 					return;
 				}
 
