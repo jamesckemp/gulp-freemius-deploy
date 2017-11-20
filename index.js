@@ -30,6 +30,10 @@ module.exports = function( gulp, args ) {
 	};
 
 	gulp.task( 'freemius-deploy', function() {
+		if( ! Number.isInteger( args.plugin_id ) ) {
+			return;
+		}
+
 		var resource_url = '/v1/developers/' + args.developer_id + '/plugins/' + args.plugin_id + '/tags.json',
 			boundary = '----' + (new Date().getTime()).toString( 16 ),
 			content_md5 = '',
