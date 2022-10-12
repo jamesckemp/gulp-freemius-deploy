@@ -29,9 +29,9 @@ module.exports = function( gulp, args ) {
 		return str;
 	};
 
-	gulp.task( 'freemius-deploy', function() {
+	gulp.task( 'freemius-deploy', function(done) {
 		if( ! Number.isInteger( args.plugin_id ) ) {
-			return;
+			done();
 		}
 
 		var resource_url = '/v1/developers/' + args.developer_id + '/plugins/' + args.plugin_id + '/tags.json',
@@ -73,7 +73,7 @@ module.exports = function( gulp, args ) {
 				message = 'Error deploying to Freemius.';
 				notifier.notify( { message: message } );
 				console.log( '\x1b[31m%s\x1b[0m', message );
-				return;
+				done();
 			}
 
 			if ( typeof body === 'object' ) {
@@ -81,18 +81,19 @@ module.exports = function( gulp, args ) {
 					message = 'Error: ' + body.error.message;
 					notifier.notify( { message: message } );
 					console.log( '\x1b[31m%s\x1b[0m', message );
-					return;
+					done();
 				}
 
 				message = 'Successfully deployed v' + body.version + ' to Freemius. Go and release it: https://dashboard.freemius.com/#!/live/plugins/' + args.plugin_id + '/deployment/';
 				notifier.notify( { message: message } );
 				console.log( '\x1b[32m%s\x1b[0m', message );
-				return;
+				done();
 			}
 
 			message = 'Try deploying to Freemius again in a minute.';
 			notifier.notify( { message: message } );
 			console.log( '\x1b[33m%s\x1b[0m', message );
+			done();
 		} );
 	} );
 };
